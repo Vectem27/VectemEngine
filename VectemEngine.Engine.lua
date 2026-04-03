@@ -5,6 +5,13 @@ VectemEngine_Rules = EngineRules(
 
     Modules = 
     {
+        /* Third Party */
+        Glfw = 
+        {
+            Platforms = Platforms.All
+        },
+
+        /* Engine */
         Launch = 
         {
             Platforms = Platforms.All
