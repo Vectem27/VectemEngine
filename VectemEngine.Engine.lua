@@ -5,10 +5,21 @@ VectemEngine_Rules = EngineRules(
 
     Modules = 
     {
+        -- Third party modules
+        VulkanHeader =
+        {
+            Platforms = Platforms.All
+        },
+        VulkanLoader = 
+        {
+            Platforms = Platforms.All
+        },
         Glfw = 
         {
             Platforms = Platforms.All
         },
+
+        -- Engine modules
 
         Launch = 
         {

@@ -1,3 +1,3 @@
 Launch_Rules = Module({
-    PrivateDependencies = {"Glfw"},
+    PrivateDependencies = {"Glfw", "VulkanHeader", "VulkanLoader", "Volk"},
 })
