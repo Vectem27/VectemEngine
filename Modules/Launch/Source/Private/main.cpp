@@ -1,9 +1,34 @@
-#include <cstdlib>
-#include <iostream>
+#include <GLFW/glfw3.h>
 
-int main(int argc, char* argv[])
+int main()
 {
-    std::cout << "Hello, Vectem Engine!" << std::endl;
+    // Initialisation
+    if (!glfwInit())
+        return -1;
 
-    return EXIT_SUCCESS;
+    // Création de la fenêtre
+    GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW Minimal", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    // Contexte OpenGL
+    glfwMakeContextCurrent(window);
+
+    // Boucle principale
+    while (!glfwWindowShouldClose(window))
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    // Nettoyage
+    glfwDestroyWindow(window);
+    glfwTerminate();
+
+    return 0;
 }

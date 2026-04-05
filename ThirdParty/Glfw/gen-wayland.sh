@@ -17,7 +17,7 @@ for xml in "$XML_DIR"/*.xml; do
 
     wayland-scanner private-code \
         "$xml" \
-        "$OUTPUT_DIR/$proto-protocol.c"
+        "$OUTPUT_DIR/$proto-client-protocol-code.h"
 done
 
 echo "Wayland file generation done"
