@@ -6,6 +6,10 @@ VectemEngine_Rules = EngineRules(
     Modules = 
     {
         -- Third party modules
+        Volk = 
+        {
+            Platforms = Platforms.All
+        },
         VulkanHeader =
         {
             Platforms = Platforms.All
