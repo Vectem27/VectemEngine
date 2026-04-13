@@ -5,11 +5,35 @@
 
 #include <algorithm>
 #include <cstdint>
+#include <cstdlib>
 #include <iostream>
 #include <optional>
 #include <set>
 #include <stdexcept>
 #include <vector>
+
+#if defined(__linux__)
+#  if defined(FORCE_GLFW_X11) && defined(FORCE_GLFW_WAYLAND)
+#    error "Only one of FORCE_GLFW_X11 or FORCE_GLFW_WAYLAND may be defined"
+#  endif
+
+#  if defined(FORCE_GLFW_X11)
+#    define GLFW_FORCE_PLATFORM() do { \
+        unsetenv("WAYLAND_DISPLAY"); \
+        setenv("XDG_SESSION_TYPE", "x11", 1); \
+    } while (0)
+#  elif defined(FORCE_GLFW_WAYLAND)
+#    define GLFW_FORCE_PLATFORM() do { \
+        setenv("XDG_SESSION_TYPE", "wayland", 1); \
+        if (!getenv("WAYLAND_DISPLAY")) \
+            setenv("WAYLAND_DISPLAY", "wayland-0", 1); \
+    } while (0)
+#  else
+#    define GLFW_FORCE_PLATFORM() ((void)0)
+#  endif
+#else
+#  define GLFW_FORCE_PLATFORM() ((void)0)
+#endif
 
 namespace
 {
@@ -247,6 +271,8 @@ int main()
 
     try
     {
+        GLFW_FORCE_PLATFORM();
+
         if (!glfwInit())
         {
             throw std::runtime_error("Impossible d'initialiser GLFW");

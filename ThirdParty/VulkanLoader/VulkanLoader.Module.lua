@@ -7,8 +7,8 @@ VulkanLoader_Rules = Module({
     AdditionalStaticLibDirectory = {},
     AdditionalStaticLib = 
     { 
-        "X11", "Xrandr", "Xinerama", "Xcursor", "Xi", "GL",
-        "dl", "wayland-client", "xkbcommon", "wayland-cursor", "wayland-egl", "EGL",
+        "X11", "Xrandr", "Xinerama", "Xcursor", "Xi", --"GL",
+        "dl", "wayland-client", "xkbcommon", "wayland-cursor", "wayland-egl", --"EGL",
         "pthread"
     },
 

@@ -5,7 +5,7 @@ Glfw_Rules = Module({
     AdditionalStaticLibDirectory = {},
     AdditionalStaticLib = 
     { 
-        "X11", "Xrandr", "Xinerama", "Xcursor", "Xi", "GL",
+        "X11", "Xrandr", "Xinerama", "Xcursor", "Xi", --"GL",
         "wayland-client", "xkbcommon"
     },
 
